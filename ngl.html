@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NGL SPAMMER | GHOST PROTOCOL v2.0</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Fira+Code:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Fira Code', 'Share Tech Mono', monospace;
+            background: #0a0a0f;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Matrix Binary Rain Effect */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(0deg, 
+                rgba(110, 0, 255, 0.03) 0px, 
+                rgba(110, 0, 255, 0.03) 2px,
+                transparent 2px,
+                transparent 6px);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Glitch effect overlay */
+        body::after {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 50% 50%, rgba(80, 0, 255, 0.05) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 480px;
+            background: rgba(8, 6, 16, 0.85);
+            backdrop-filter: blur(12px);
+            border-radius: 28px;
+            overflow: hidden;
+            box-shadow: 0 25px 45px rgba(110, 0, 255, 0.3), 0 0 0 1px rgba(156, 0, 255, 0.2);
+            border: 1px solid rgba(156, 0, 255, 0.4);
+            position: relative;
+            z-index: 2;
+            transition: all 0.3s ease;
+        }
+
+        /* Hacker Header */
+        .header {
+            background: rgba(0, 0, 0, 0.6);
+            padding: 18px 22px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 2px solid #9b4dff;
+            box-shadow: 0 0 15px rgba(155, 77, 255, 0.2);
+            position: relative;
+        }
+
+        .header::before {
+            content: ">";
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #bc4eff;
+            font-size: 20px;
+            font-weight: bold;
+            opacity: 0.6;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-left: 15px;
+        }
+
+        .app-icon {
+            width: 44px;
+            height: 44px;
+            background: linear-gradient(135deg, #7c2ae8, #b14eff);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            font-weight: 700;
+            color: #0a0a0f;
+            box-shadow: 0 0 12px #b14eff;
+            font-family: monospace;
+            text-shadow: 0 0 3px #fff;
+        }
+
+        .app-title h1 {
+            color: #e0b0ff;
+            font-size: 17px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            margin-bottom: 4px;
+            text-shadow: 0 0 5px #9b4dff;
+        }
+
+        .app-title p {
+            color: #8a6eb0;
+            font-size: 9px;
+            font-weight: 400;
+            letter-spacing: 1px;
+        }
+
+        .owner-badge {
+            background: rgba(155, 77, 255, 0.2);
+            padding: 6px 14px;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border: 1px solid #9b4dff;
+            backdrop-filter: blur(4px);
+        }
+
+        .owner-label {
+            color: #b87cff;
+            font-size: 9px;
+            font-weight: 500;
+            letter-spacing: 1px;
+        }
+
+        .owner-name {
+            color: #d99eff;
+            font-size: 11px;
+            font-weight: 700;
+            text-shadow: 0 0 3px #b14eff;
+        }
+
+        /* Expiry - Hacker style */
+        .expiry {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 14px 22px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            border-bottom: 1px solid rgba(155, 77, 255, 0.3);
+        }
+
+        .expiry-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(155, 77, 255, 0.15);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #c77dff;
+            font-size: 20px;
+            border: 1px solid #9b4dff;
+        }
+
+        .expiry-text {
+            flex: 1;
+        }
+
+        .expiry-label {
+            color: #9b7bb5;
+            font-size: 10px;
+            font-weight: 400;
+            letter-spacing: 1px;
+            margin-bottom: 4px;
+        }
+
+        .expiry-date {
+            color: #e0b0ff;
+            font-size: 16px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            font-family: 'Share Tech Mono', monospace;
+            text-shadow: 0 0 4px #9b4dff;
+        }
+
+        /* Version - Glitch */
+        .version {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 10px 22px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-bottom: 1px solid rgba(155, 77, 255, 0.3);
+        }
+
+        .version-badge {
+            background: #2a1a44;
+            padding: 4px 14px;
+            border-radius: 20px;
+            color: #c68eff;
+            font-size: 11px;
+            font-weight: 700;
+            border: 1px solid #b14eff;
+            box-shadow: 0 0 6px #9b4dff;
+            letter-spacing: 1px;
+        }
+
+        .version-text {
+            color: #9b7bb5;
+            font-size: 10px;
+            font-weight: 400;
+            font-family: monospace;
+        }
+
+        /* Panel Title */
+        .panel-title {
+            color: #e0b0ff;
+            font-size: 19px;
+            font-weight: 600;
+            padding: 20px 22px 12px 22px;
+            letter-spacing: 1px;
+            text-shadow: 0 0 8px #7c2ae8;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .panel-title::before {
+            content: "#";
+            color: #b14eff;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .content {
+            padding: 0 22px 22px 22px;
+        }
+
+        /* Input Groups - Hacker style */
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        .input-label {
+            color: #b87cff;
+            font-size: 11px;
+            font-weight: 500;
+            margin-bottom: 8px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .input-label::before {
+            content: "➤";
+            color: #bc4eff;
+            font-size: 10px;
+        }
+
+        .input-field {
+            width: 100%;
+            background: #05030c;
+            border: 1.5px solid #3a2a55;
+            border-radius: 12px;
+            padding: 13px 16px;
+            color: #e0b0ff;
+            font-family: 'Fira Code', monospace;
+            font-size: 13px;
+            outline: none;
+            transition: all 0.2s;
+            box-shadow: inset 0 2px 5px rgba(0,0,0,0.5);
+        }
+
+        .input-field:focus {
+            border-color: #bc4eff;
+            box-shadow: 0 0 12px rgba(188, 78, 255, 0.4), inset 0 0 5px rgba(0,0,0,0.3);
+        }
+
+        .input-field::placeholder {
+            color: #3a2a55;
+            font-family: monospace;
+        }
+
+        textarea.input-field {
+            resize: vertical;
+            min-height: 110px;
+        }
+
+        /* Jumlah Pesan */
+        .message-count {
+            margin-bottom: 24px;
+        }
+
+        .count-label {
+            color: #b87cff;
+            font-size: 11px;
+            font-weight: 500;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .count-input {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .count-field {
+            flex: 1;
+            background: #05030c;
+            border: 1.5px solid #3a2a55;
+            border-radius: 12px;
+            padding: 12px 16px;
+            color: #e0b0ff;
+            font-family: 'Fira Code', monospace;
+            font-size: 14px;
+            outline: none;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .count-field:focus {
+            border-color: #bc4eff;
+        }
+
+        .count-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .count-btn {
+            width: 48px;
+            height: 48px;
+            background: #0e0920;
+            border: 1.5px solid #6a3eaa;
+            border-radius: 12px;
+            color: #d48eff;
+            font-size: 20px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: monospace;
+        }
+
+        .count-btn:hover {
+            background: #2a1a4a;
+            border-color: #bc4eff;
+            box-shadow: 0 0 10px #9b4dff;
+            color: #ffffff;
+        }
+
+        /* Status Card - Cyberpunk */
+        .status-card {
+            background: rgba(5, 3, 12, 0.7);
+            border-radius: 18px;
+            padding: 18px;
+            margin-bottom: 22px;
+            border: 1px solid #6a3eaa;
+            backdrop-filter: blur(4px);
+            box-shadow: 0 0 12px rgba(155, 77, 255, 0.2);
+        }
+
+        .status-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 14px;
+        }
+
+        .status-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .status-label {
+            color: #9b7bb5;
+            font-size: 12px;
+            letter-spacing: 0.5px;
+        }
+
+        .status-value {
+            color: #d48eff;
+            font-size: 16px;
+            font-weight: 700;
+            font-family: 'Share Tech Mono', monospace;
+        }
+
+        .status-value.success {
+            color: #c77dff;
+            text-shadow: 0 0 6px #b14eff;
+        }
+
+        .progress-bar {
+            height: 6px;
+            background: #1f1738;
+            border-radius: 3px;
+            margin: 18px 0 5px 0;
+            overflow: hidden;
+            box-shadow: inset 0 0 5px rgba(0,0,0,0.5);
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #a450ff, #d96cff);
+            width: 0%;
+            transition: width 0.3s;
+            box-shadow: 0 0 5px #bc4eff;
+        }
+
+        /* Action Buttons */
+        .action-buttons {
+            display: flex;
+            gap: 14px;
+            margin-bottom: 24px;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 14px;
+            border: none;
+            border-radius: 14px;
+            font-family: 'Fira Code', monospace;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .btn-primary {
+            background: linear-gradient(95deg, #6a1b9a, #9b4dff);
+            color: #0f0a1a;
+            border: 1px solid #d48eff;
+            box-shadow: 0 0 12px rgba(155, 77, 255, 0.5);
+        }
+
+        .btn-primary:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+            box-shadow: 0 0 20px #bc4eff;
+        }
+
+        .btn-primary:active {
+            transform: translateY(1px);
+        }
+
+        .btn-primary:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .btn-secondary {
+            background: #0e0920;
+            color: #b87cff;
+            border: 1.5px solid #6a3eaa;
+        }
+
+        .btn-secondary:hover {
+            background: #21153f;
+            color: #e0b0ff;
+            border-color: #bc4eff;
+            box-shadow: 0 0 8px #9b4dff;
+        }
+
+        /* Log Activity - Terminal Style */
+        .log-container {
+            background: #03010a;
+            border-radius: 16px;
+            padding: 10px;
+            border: 1px solid #6a3eaa;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+        }
+
+        .log-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+            padding: 0 6px;
+            color: #9b7bb5;
+            font-size: 10px;
+            font-weight: 500;
+            letter-spacing: 1px;
+        }
+
+        .log-header span:first-child::before {
+            content: "⚡ ";
+            color: #bc4eff;
+        }
+
+        .log-content {
+            height: 110px;
+            overflow-y: auto;
+            font-size: 10px;
+            color: #aa88ff;
+            background: #020008;
+            padding: 12px;
+            border-radius: 10px;
+            border: 1px solid #3a2a55;
+            font-family: 'Share Tech Mono', monospace;
+        }
+
+        .log-content::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .log-content::-webkit-scrollbar-track {
+            background: #1f1738;
+        }
+
+        .log-content::-webkit-scrollbar-thumb {
+            background: #bc4eff;
+            border-radius: 4px;
+        }
+
+        .log-entry {
+            padding: 4px 0;
+            border-bottom: 1px solid #2a1a44;
+            font-family: monospace;
+        }
+
+        .log-entry:last-child {
+            border-bottom: none;
+        }
+
+        .log-entry.success {
+            color: #c07eff;
+            text-shadow: 0 0 2px #9b4dff;
+        }
+
+        .log-entry.error {
+            color: #ff6ec7;
+        }
+
+        .timestamp {
+            color: #6a3eaa;
+            margin-right: 10px;
+            font-weight: 500;
+        }
+
+        /* Footer */
+        .footer {
+            background: rgba(0, 0, 0, 0.6);
+            padding: 14px 20px;
+            text-align: center;
+            border-top: 1px solid rgba(155, 77, 255, 0.3);
+        }
+
+        .footer-text {
+            color: #6a4a8a;
+            font-size: 9px;
+            font-weight: 400;
+            letter-spacing: 1px;
+        }
+
+        .footer-text span {
+            color: #bc4eff;
+            text-shadow: 0 0 3px #9b4dff;
+        }
+
+        /* Glitch Text Effect */
+        @keyframes glitch {
+            0%, 100% { text-shadow: 0 0 3px #bc4eff; }
+            25% { text-shadow: -2px 0 #ff00c3, 2px 0 #00ffff; }
+            50% { text-shadow: 2px 0 #ff00c3, -2px 0 #00ffff; }
+            75% { text-shadow: 0 0 8px #bc4eff; }
+        }
+
+        .glitch-text {
+            animation: glitch 3s infinite;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header - Hacker Style -->
+        <div class="header">
+            <div class="header-left">
+                <div class="app-icon">#!</div>
+                <div class="app-title">
+                    <h1 class="glitch-text">NGL_SPAMMER</h1>
+                    <p>// GHOST PROTOCOL //</p>
+                </div>
+            </div>
+            <div class="owner-badge">
+                <span class="owner-label">ROOT</span>
+                <span class="owner-name">[RASYEL]</span>
+            </div>
+        </div>
+
+        <!-- Expiry - Hacker timestamp -->
+        <div class="expiry">
+            <div class="expiry-icon">⌨️</div>
+            <div class="expiry-text">
+                <div class="expiry-label">[ TOKEN_EXP ]</div>
+                <div class="expiry-date">2853-07-23 // PERMANENT</div>
+            </div>
+        </div>
+
+        <!-- Version - Codename -->
+        <div class="version">
+            <div class="version-badge">v2.0_UNG0D</div>
+            <div class="version-text">> HOLLOW_GRAVY_OVERDRIVE</div>
+        </div>
+
+        <!-- Control Panel Title -->
+        <div class="panel-title">
+            CONTROL_PANEL
+        </div>
+
+        <!-- Content -->
+        <div class="content">
+            <!-- Username Input -->
+            <div class="input-group">
+                <div class="input-label">TARGET_USERNAME</div>
+                <input type="text" class="input-field" id="username" placeholder="ex: anonymous_hacker" value="">
+            </div>
+
+            <!-- Pesan Input -->
+            <div class="input-group">
+                <div class="input-label">PAYLOAD_MESSAGES</div>
+                <textarea class="input-field" id="messages" placeholder="msg_1&#10;msg_2&#10;msg_3">[SYSTEM] Your identity is compromised
+[!] DELETE_ACCOUNT_REQUEST
+[WARNING] Final warning issued
+[ERROR] Toxic behavior detected
+[TRACE] We are watching you</textarea>
+            </div>
+
+            <!-- Jumlah Pesan -->
+            <div class="message-count">
+                <div class="count-label">>> SPAM_COUNT</div>
+                <div class="count-input">
+                    <input type="number" class="count-field" id="messageCount" value="5" min="1" max="100">
+                    <div class="count-buttons">
+                        <button class="count-btn" id="addBtn">+</button>
+                        <button class="count-btn" id="subtractBtn">-</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Status Card -->
+            <div class="status-card">
+                <div class="status-row">
+                    <span class="status-label">[ SUCCESS_ATTACK ]</span>
+                    <span class="status-value success" id="sentCount">0</span>
+                </div>
+                <div class="status-row">
+                    <span class="status-label">[ FAILED_PACKET ]</span>
+                    <span class="status-value" id="failCount">0</span>
+                </div>
+                <div class="status-row">
+                    <span class="status-label">[ REMAINING ]</span>
+                    <span class="status-value" id="remainingCount">5</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill" style="width: 0%;"></div>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="action-buttons">
+                <button class="btn btn-primary" id="startBtn">
+                    <span>▶</span> EXECUTE
+                </button>
+                <button class="btn btn-secondary" id="resetBtn">
+                    <span>⟲</span> RESET
+                </button>
+            </div>
+
+            <!-- Log Activity -->
+            <div class="log-container">
+                <div class="log-header">
+                    <span>LIVE_TERMINAL</span>
+                    <span>ACTIVE</span>
+                </div>
+                <div class="log-content" id="log"></div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <div class="footer-text">
+                © 2024 <span>RASYEL_DEV</span> • NGL_SPAMMER | ENCRYPTED_CHANNEL
+            </div>
+        </div>
+    </div>
+
+    <script>
+        (function() {
+            // DOM Elements
+            const usernameInput = document.getElementById('username');
+            const messagesInput = document.getElementById('messages');
+            const messageCountInput = document.getElementById('messageCount');
+            const addBtn = document.getElementById('addBtn');
+            const subtractBtn = document.getElementById('subtractBtn');
+            const startBtn = document.getElementById('startBtn');
+            const resetBtn = document.getElementById('resetBtn');
+            const sentSpan = document.getElementById('sentCount');
+            const failSpan = document.getElementById('failCount');
+            const remainingSpan = document.getElementById('remainingCount');
+            const progressFill = document.getElementById('progressFill');
+            const logDiv = document.getElementById('log');
+
+            // State
+            let isRunning = false;
+            let sent = 0;
+            let failed = 0;
+            let abortController = null;
+
+            // API Endpoint
+            const API_ENDPOINT = 'https://ngl.link/api/submit';
+
+            // User Agents - dark variety
+            const USER_AGENTS = [
+                'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/118.0',
+                'Mozilla/5.0 (iPhone; CPU iPhone OS 16_0 like Mac OS X) AppleWebKit/605.1.15',
+                'Mozilla/5.0 (Linux; Android 13; SM-G998B) AppleWebKit/537.36',
+                'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36',
+                'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36'
+            ];
+
+            // Counter buttons
+            addBtn.addEventListener('click', () => {
+                let val = parseInt(messageCountInput.value) || 1;
+                messageCountInput.value = val + 1;
+                updateRemaining();
+            });
+
+            subtractBtn.addEventListener('click', () => {
+                let val = parseInt(messageCountInput.value) || 1;
+                if (val > 1) {
+                    messageCountInput.value = val - 1;
+                    updateRemaining();
+                }
+            });
+
+            messageCountInput.addEventListener('input', updateRemaining);
+
+            function updateRemaining() {
+                const total = parseInt(messageCountInput.value) || 1;
+                const remaining = Math.max(0, total - sent);
+                remainingSpan.textContent = remaining;
+                
+                if (total > 0) {
+                    const percentage = (sent / total) * 100;
+                    progressFill.style.width = Math.min(percentage, 100) + '%';
+                }
+            }
+
+            function log(message, type = 'info') {
+                const entry = document.createElement('div');
+                entry.className = 'log-entry';
+                
+                const timestamp = document.createElement('span');
+                timestamp.className = 'timestamp';
+                const now = new Date();
+                const timeStr = `${now.getHours().toString().padStart(2,'0')}:${now.getMinutes().toString().padStart(2,'0')}:${now.getSeconds().toString().padStart(2,'0')}.${now.getMilliseconds().toString().slice(0,2)}`;
+                timestamp.textContent = `[${timeStr}]`;
+                
+                const content = document.createElement('span');
+                content.textContent = message;
+                
+                if (type === 'success') entry.classList.add('success');
+                if (type === 'error') entry.classList.add('error');
+                
+                entry.appendChild(timestamp);
+                entry.appendChild(content);
+                logDiv.appendChild(entry);
+                logDiv.scrollTop = logDiv.scrollHeight;
+                
+                // keep log tidy
+                while(logDiv.children.length > 75) {
+                    logDiv.removeChild(logDiv.firstChild);
+                }
+            }
+
+            function updateStats() {
+                sentSpan.textContent = sent;
+                failSpan.textContent = failed;
+                updateRemaining();
+            }
+
+            function generateDeviceId() {
+                return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+                    const r = Math.random() * 16 | 0;
+                    const v = c === 'x' ? r : (r & 0x3 | 0x8);
+                    return v.toString(16);
+                });
+            }
+
+            function getRandomMessage() {
+                const lines = messagesInput.value.split('\n').filter(l => l.trim() !== '');
+                if (lines.length === 0) return '> SYSTEM_ATTACK_MESSAGE';
+                return lines[Math.floor(Math.random() * lines.length)];
+            }
+
+            async function sendMessage() {
+                const username = usernameInput.value.trim();
+                if (!username) {
+                    log('! ERROR: NO_TARGET_SPECIFIED', 'error');
+                    return false;
+                }
+
+                const message = getRandomMessage();
+                const deviceId = generateDeviceId();
+                const userAgent = USER_AGENTS[Math.floor(Math.random() * USER_AGENTS.length)];
+
+                try {
+                    const formData = new URLSearchParams();
+                    formData.append('username', username);
+                    formData.append('question', message);
+                    formData.append('deviceId', deviceId);
+                    formData.append('gameSlug', '');
+                    formData.append('referrer', '');
+
+                    const response = await fetch(API_ENDPOINT, {
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            'User-Agent': userAgent,
+                            'Accept': '*/*',
+                            'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+                            'Origin': 'https://ngl.link',
+                            'Referer': 'https://ngl.link/'
+                        },
+                        signal: abortController?.signal
+                    });
+
+                    if (response.ok) {
+                        sent++;
+                        log(`✓ PAYLOAD_SENT -> @${username} [${message.substring(0, 40)}]`, 'success');
+                    } else {
+                        failed++;
+                        log(`✗ REJECTED: HTTP_${response.status}`, 'error');
+                    }
+
+                } catch (error) {
+                    if (error.name === 'AbortError') {
+                        log('! ATTACK_ABORTED', 'error');
+                        return false;
+                    }
+                    failed++;
+                    log(`✗ PROTOCOL_ERROR: ${error.message.substring(0, 50)}`, 'error');
+                }
+
+                updateStats();
+                return true;
+            }
+
+            async function startSpam() {
+                const username = usernameInput.value.trim();
+                if (!username) {
+                    log('! FATAL: INSERT_TARGET_USERNAME', 'error');
+                    return;
+                }
+
+                const totalMessages = parseInt(messageCountInput.value) || 1;
+                if(totalMessages <= 0) {
+                    log('! INVALID_SPAM_COUNT', 'error');
+                    return;
+                }
+                
+                isRunning = true;
+                startBtn.disabled = true;
+                abortController = new AbortController();
+
+                log(`🚀 [ATTACK_INIT] target=@${username} | rounds=${totalMessages}`, 'success');
+                log(`🔧 PROTOCOL_ACTIVE | random_delay=1-2s`, 'info');
+
+                for (let i = 0; i < totalMessages; i++) {
+                    if (!isRunning) break;
+                    
+                    await sendMessage();
+                    
+                    // Random delay 1.2 - 2.1 sec
+                    await new Promise(resolve => setTimeout(resolve, 1200 + Math.random() * 1000));
+                }
+
+                if (isRunning) {
+                    log('✅ [MISSION_COMPLETE] All payloads delivered', 'success');
+                } else {
+                    log('⚠️ [TERMINATED] Attack halted by user', 'error');
+                }
+                
+                isRunning = false;
+                startBtn.disabled = false;
+                abortController = null;
+            }
+
+            function resetAll() {
+                if (isRunning) {
+                    isRunning = false;
+                    if (abortController) {
+                        abortController.abort();
+                        abortController = null;
+                    }
+                    startBtn.disabled = false;
+                    log('! EMERGENCY_HALT: System reset forced', 'error');
+                }
+
+                sent = 0;
+                failed = 0;
+                updateStats();
+                progressFill.style.width = '0%';
+                logDiv.innerHTML = '';
+                
+                log('🔄 SYSTEM_RESET | READY_FOR_NEW_TARGET', 'info');
+                log('✨ NGL_SPAMMER [GHOST_PROTOCOL] ONLINE', 'success');
+            }
+
+            startBtn.addEventListener('click', startSpam);
+            resetBtn.addEventListener('click', resetAll);
+
+            messageCountInput.addEventListener('change', function() {
+                if (this.value < 1) this.value = 1;
+                if (this.value > 250) this.value = 250;
+                updateRemaining();
+            });
+
+            // Initialize
+            updateRemaining();
+            log('✨ NGL_SPAMMER [GHOST_PROTOCOL] LOADED', 'success');
+            log('📡 ENCRYPTED_CHANNEL_READY | await target', 'info');
+        })();
+    </script>
+</body>
+</html>
